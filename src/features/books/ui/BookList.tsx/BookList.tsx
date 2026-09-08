@@ -1,7 +1,8 @@
-import { SimpleGrid, Skeleton, Text } from '@mantine/core'
+import { SimpleGrid, Text } from '@mantine/core'
 import type { BookSearch } from '../../model/types'
 import { useLayoutEffect } from 'react'
 import { BookCard } from '../BookCard/BookCard'
+import { BookListSkeleton } from './BookListSkeleton'
 
 interface Props {
     books: BookSearch[]
@@ -25,11 +26,7 @@ export const BooksList = ({ books, isLoading, isFetchingNextPage }: Props) => {
     if (isLoading) {
         return (
             <SimpleGrid cols={{ base: 2, sm: 3, md: 4, lg: 5 }}>
-                {Array(20)
-                    .fill(0)
-                    .map((_, index) => (
-                        <Skeleton key={index} height="450px" />
-                    ))}
+                <BookListSkeleton />
             </SimpleGrid>
         )
     }
@@ -43,15 +40,7 @@ export const BooksList = ({ books, isLoading, isFetchingNextPage }: Props) => {
             {books.map(book => (
                 <BookCard book={book} key={book.key} />
             ))}
-            {isFetchingNextPage && (
-                <>
-                    {Array(4)
-                        .fill(0)
-                        .map((_, index) => (
-                            <Skeleton key={index} height="450px" />
-                        ))}
-                </>
-            )}
+            {isFetchingNextPage && <BookListSkeleton size={8} />}
         </SimpleGrid>
     )
 }

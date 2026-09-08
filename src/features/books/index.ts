@@ -1,2 +1,2 @@
-export { SearchBooksLayout } from './ui/components/SearchBooksLayout'
+export { SearchBooksLayout } from './ui/SearchBooksLayout'
 export { SearchBooksPage } from './ui/SearchBooksPage'
