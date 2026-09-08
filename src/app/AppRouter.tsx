@@ -1,18 +1,21 @@
-import { BookDetailsPage, SearchBooksLayout } from '@/features/books'
+import { BookDetailsPage } from '@/features/books'
 import { SearchBooksPage } from '@/features/books'
-import { BackButtonLayout, ScrollToTop } from '@/shared/components'
-import { Route, Routes } from 'react-router'
+import { ScrollToTop } from '@/shared/components'
+import { Navigate, Route, Routes } from 'react-router'
+import { MainLayout } from './MainLayout'
 
 export const AppRouter = () => {
     return (
         <>
             <ScrollToTop />
             <Routes>
-                <Route element={<SearchBooksLayout />}>
-                    <Route index element={<SearchBooksPage />} />
-                </Route>
-                <Route element={<BackButtonLayout />}>
+                <Route element={<MainLayout />}>
+                    <Route path="/search" element={<SearchBooksPage />} />
                     <Route path="/book/:id" element={<BookDetailsPage />} />
+                    <Route
+                        path="*"
+                        element={<Navigate to="/search" replace />}
+                    />
                 </Route>
             </Routes>
         </>
