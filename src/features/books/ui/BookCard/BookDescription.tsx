@@ -1,6 +1,6 @@
 import { Stack, Text, Group, Badge } from '@mantine/core'
-import type { BookSearch } from '../../../model/types'
-import { mapLanguages } from '../../../util/mapLanguages'
+import type { BookSearch } from '../../model/types'
+import { mapLanguages } from '../../util/mapLanguages'
 
 interface Props {
     book: BookSearch

@@ -1,7 +1,7 @@
 import { SimpleGrid, Skeleton, Text } from '@mantine/core'
-import type { BookSearch } from '../../../model/types'
+import type { BookSearch } from '../../model/types'
 import { useLayoutEffect } from 'react'
-import { BookCard } from './BookCard'
+import { BookCard } from '../BookCard/BookCard'
 
 interface Props {
     books: BookSearch[]

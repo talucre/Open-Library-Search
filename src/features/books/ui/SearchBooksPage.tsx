@@ -3,7 +3,7 @@ import { useSearchStore } from '../model/searchStore'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { searchBooks } from '../api/books'
 import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll'
-import { BooksList } from './components/BookList.tsx/BookList'
+import { BooksList } from './BookList.tsx/BookList'
 
 export const SearchBooksPage = () => {
     const submittedQuery = useSearchStore(state => state.submittedQuery)
