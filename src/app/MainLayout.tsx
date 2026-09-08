@@ -1,23 +1,19 @@
-import { BooksSearchBar } from '@/features/books'
-import { BackButtonHeader } from '@/shared/components/BackButtonHeader'
 import { AppShell, Container } from '@mantine/core'
-import { Outlet, useLocation } from 'react-router'
+import type { ReactNode } from 'react'
+import { Outlet } from 'react-router'
 
-export const MainLayout = () => {
-    const { pathname } = useLocation()
-
-    const isSearch = pathname === '/search'
-
+export const MainLayout = ({
+    header,
+    children,
+}: {
+    header: ReactNode
+    children: ReactNode
+}) => {
     return (
         <AppShell header={{ height: 60 }}>
-            <AppShell.Header>
-                {isSearch && <BooksSearchBar />}
-                {!isSearch && <BackButtonHeader />}
-            </AppShell.Header>
+            <AppShell.Header>{header}</AppShell.Header>
             <AppShell.Main>
-                <Container py="md">
-                    <Outlet />
-                </Container>
+                <Container py="md">{children}</Container>
             </AppShell.Main>
         </AppShell>
     )

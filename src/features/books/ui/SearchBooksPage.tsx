@@ -52,8 +52,8 @@ export const SearchBooksPage = () => {
     return (
         <Stack h="100%" gap="md">
             {isError && (
-                <Center h="50dvh" flex={1}>
-                    <Stack>
+                <Center h="50dvh">
+                    <Stack h="50dvh" justify="center" align="center">
                         <Text ta="center">
                             Произошла ошибка при загрузке книг
                         </Text>

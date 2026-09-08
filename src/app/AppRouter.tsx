@@ -1,6 +1,6 @@
-import { BookDetailsPage } from '@/features/books'
+import { BookDetailsPage, BooksSearchBar } from '@/features/books'
 import { SearchBooksPage } from '@/features/books'
-import { ScrollToTop } from '@/shared/components'
+import { BackButtonHeader, ScrollToTop } from '@/shared/components'
 import { Navigate, Route, Routes } from 'react-router'
 import { MainLayout } from './MainLayout'
 
@@ -9,14 +9,24 @@ export const AppRouter = () => {
         <>
             <ScrollToTop />
             <Routes>
-                <Route element={<MainLayout />}>
-                    <Route path="/search" element={<SearchBooksPage />} />
-                    <Route path="/book/:id" element={<BookDetailsPage />} />
-                    <Route
-                        path="*"
-                        element={<Navigate to="/search" replace />}
-                    />
-                </Route>
+                <Route
+                    path="/search"
+                    element={
+                        <MainLayout header={<BooksSearchBar />}>
+                            <SearchBooksPage />
+                        </MainLayout>
+                    }
+                />
+
+                <Route
+                    path="/book/:id"
+                    element={
+                        <MainLayout header={<BackButtonHeader />}>
+                            <BookDetailsPage />{' '}
+                        </MainLayout>
+                    }
+                />
+                <Route path="*" element={<Navigate to="/search" replace />} />
             </Routes>
         </>
     )
