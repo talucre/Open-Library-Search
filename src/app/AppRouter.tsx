@@ -17,12 +17,11 @@ export const AppRouter = () => {
                         </MainLayout>
                     }
                 />
-
                 <Route
                     path="/book/:id"
                     element={
                         <MainLayout header={<BackButtonHeader />}>
-                            <BookDetailsPage />{' '}
+                            <BookDetailsPage />
                         </MainLayout>
                     }
                 />
