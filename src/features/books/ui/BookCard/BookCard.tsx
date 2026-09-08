@@ -1,7 +1,8 @@
 import type { BookSearch } from '@/features/books/model/types'
-import { Card } from '@mantine/core'
+import { Button, Card } from '@mantine/core'
 import { BookCover } from './BookCover'
 import { BookDescription } from './BookDescription'
+import { Link } from 'react-router'
 
 interface Props {
     book: BookSearch
@@ -15,6 +16,11 @@ export const BookCard = ({ book }: Props) => {
             </Card.Section>
             <Card.Section p="xs">
                 <BookDescription book={book} />
+            </Card.Section>
+            <Card.Section mt="auto" p="xs">
+                <Link to={`/book/${book.key.slice(6)}`}>
+                    <Button w="100%">Узнать больше</Button>
+                </Link>
             </Card.Section>
         </Card>
     )

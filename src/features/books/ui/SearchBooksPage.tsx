@@ -1,4 +1,4 @@
-import { Center, Stack, Text } from '@mantine/core'
+import { Button, Center, Stack, Text } from '@mantine/core'
 import { useSearchStore } from '../model/searchStore'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { searchBooks } from '../api/books'
@@ -15,6 +15,7 @@ export const SearchBooksPage = () => {
         isFetchingNextPage,
         isLoading,
         isError,
+        refetch,
     } = useInfiniteQuery({
         queryKey: ['books', submittedQuery],
         queryFn: ({ pageParam }) => searchBooks(submittedQuery, pageParam),
@@ -55,6 +56,9 @@ export const SearchBooksPage = () => {
             {isError && (
                 <Center flex={1}>
                     <Text>Произошла ошибка при загрузке книг</Text>
+                    <Button onClick={() => refetch()}>
+                        Попробовать снова?
+                    </Button>
                 </Center>
             )}
 
