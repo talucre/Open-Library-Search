@@ -1,0 +1,57 @@
+import { SimpleGrid, Skeleton, Text } from '@mantine/core'
+import type { BookSearch } from '../../../model/types'
+import { useLayoutEffect } from 'react'
+import { BookCard } from './BookCard'
+
+interface Props {
+    books: BookSearch[]
+    isLoading: boolean
+    isFetchingNextPage: boolean
+}
+
+export const BooksList = ({ books, isLoading, isFetchingNextPage }: Props) => {
+    useLayoutEffect(() => {
+        if (isLoading) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'unset'
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset'
+        }
+    }, [isLoading])
+
+    if (isLoading) {
+        return (
+            <SimpleGrid cols={{ base: 2, sm: 3, md: 4, lg: 5 }}>
+                {Array(20)
+                    .fill(0)
+                    .map((_, index) => (
+                        <Skeleton key={index} height="450px" />
+                    ))}
+            </SimpleGrid>
+        )
+    }
+
+    if (books.length === 0) {
+        return <Text>По вашему запросу ничего не найдено</Text>
+    }
+
+    return (
+        <SimpleGrid cols={{ base: 2, sm: 3, md: 4, lg: 5 }}>
+            {books.map(book => (
+                <BookCard book={book} key={book.key} />
+            ))}
+            {isFetchingNextPage && (
+                <>
+                    {Array(4)
+                        .fill(0)
+                        .map((_, index) => (
+                            <Skeleton key={index} height="450px" />
+                        ))}
+                </>
+            )}
+        </SimpleGrid>
+    )
+}

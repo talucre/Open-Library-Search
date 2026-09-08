@@ -1,8 +1,9 @@
-import { Center, Text } from '@mantine/core'
+import { Center, Stack, Text } from '@mantine/core'
 import { useSearchStore } from '../model/searchStore'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { searchBooks } from '../api/books'
 import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll'
+import { BooksList } from './components/BookList.tsx/BookList'
 
 export const SearchBooksPage = () => {
     const submittedQuery = useSearchStore(state => state.submittedQuery)
@@ -49,5 +50,25 @@ export const SearchBooksPage = () => {
 
     console.log(pages)
 
-    return <div>SearchBooksPage</div>
+    return (
+        <Stack h="100%" gap="md">
+            {isError && (
+                <Center flex={1}>
+                    <Text>Произошла ошибка при загрузке книг</Text>
+                </Center>
+            )}
+
+            {!isError && (
+                <BooksList
+                    books={pages}
+                    isLoading={isLoading}
+                    isFetchingNextPage={isFetchingNextPage}
+                />
+            )}
+
+            {hasNextPage && !isLoading && (
+                <div ref={observerRef} style={{ height: '20px' }} />
+            )}
+        </Stack>
+    )
 }
