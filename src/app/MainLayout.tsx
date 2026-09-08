@@ -9,13 +9,13 @@ export const MainLayout = () => {
     const isSearch = pathname === '/search'
 
     return (
-        <AppShell p="md" header={{ height: 60 }}>
+        <AppShell header={{ height: 60 }}>
             <AppShell.Header>
                 {isSearch && <BooksSearchBar />}
                 {!isSearch && <BackButtonHeader />}
             </AppShell.Header>
             <AppShell.Main>
-                <Container>
+                <Container py="md">
                     <Outlet />
                 </Container>
             </AppShell.Main>

@@ -37,28 +37,30 @@ export const SearchBooksPage = () => {
         isFetching: isFetchingNextPage,
     })
 
-    const pages = data?.pages.flatMap(res => res.docs) || []
-
     if (!submittedQuery) {
         return (
-            <Center h="50vh">
-                <Text color="dimmed">
+            <Center h="50dvh">
+                <Text color="dimmed" ta="center">
                     Введите название книги для начала поиска
                 </Text>
             </Center>
         )
     }
 
-    console.log(pages)
+    const pages = data?.pages.flatMap(res => res.docs) || []
 
     return (
         <Stack h="100%" gap="md">
             {isError && (
-                <Center flex={1}>
-                    <Text>Произошла ошибка при загрузке книг</Text>
-                    <Button onClick={() => refetch()}>
-                        Попробовать снова?
-                    </Button>
+                <Center h="50dvh" flex={1}>
+                    <Stack>
+                        <Text ta="center">
+                            Произошла ошибка при загрузке книг
+                        </Text>
+                        <Button onClick={() => refetch()}>
+                            Попробовать снова?
+                        </Button>
+                    </Stack>
                 </Center>
             )}
 
