@@ -1,5 +1,7 @@
 import type { BookSearch } from '@/features/books/model/types'
 import { Card, Text } from '@mantine/core'
+import { BookCover } from './BookCover'
+import { BookDescription } from './BookDescription'
 
 interface Props {
     book: BookSearch
@@ -8,7 +10,12 @@ interface Props {
 export const BookCard = ({ book }: Props) => {
     return (
         <Card shadow="sm" withBorder>
-            <Text>{book.title}</Text>
+            <Card.Section>
+                <BookCover coverKey={book.cover_edition_key} />
+            </Card.Section>
+            <Card.Section p="xs">
+                <BookDescription book={book} />
+            </Card.Section>
         </Card>
     )
 }
