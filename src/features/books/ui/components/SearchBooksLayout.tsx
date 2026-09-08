@@ -30,10 +30,12 @@ export const SearchBooksLayout = () => {
                         <Search
                             value={query}
                             onChange={setQuery}
+                            placeholder="Type in to search a book"
                             data={suggestions}
                             error={error}
                             onSubmit={handleSubmit}
                             onClear={reset}
+                            clearable
                         />
                     </Stack>
                 </Container>

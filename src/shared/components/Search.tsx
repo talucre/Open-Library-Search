@@ -5,13 +5,7 @@ interface Props extends Omit<AutocompleteProps, 'onSubmit'> {
     onSubmit?: (value: string) => void
 }
 
-export const Search = ({
-    onSubmit,
-    value,
-    onChange,
-    error,
-    ...props
-}: Props) => {
+export const Search = ({ onSubmit, value, onChange, ...props }: Props) => {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const handleOptionSubmit = (value: string) => {

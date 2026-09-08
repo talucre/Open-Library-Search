@@ -1,5 +1,5 @@
 import type { BookSearch } from '@/features/books/model/types'
-import { Card, Text } from '@mantine/core'
+import { Card } from '@mantine/core'
 import { BookCover } from './BookCover'
 import { BookDescription } from './BookDescription'
 
