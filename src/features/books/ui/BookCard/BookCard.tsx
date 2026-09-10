@@ -1,4 +1,4 @@
-import type { BookSearch } from '@/features/books/model/types'
+import type { BookSearch } from '../../model/types'
 import { Button, Card } from '@mantine/core'
 import { BookCover } from './BookCover'
 import { BookDescription } from './BookDescription'

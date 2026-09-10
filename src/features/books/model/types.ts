@@ -25,3 +25,57 @@ export interface OpenLibrarySearchResponse {
     offset: number
     docs: BookSearch[]
 }
+
+export interface OLTypeRef {
+    key: string
+}
+
+export interface OLValueWithByWithType<T = string> {
+    type: string
+    value: T
+}
+
+export interface OLDescription {
+    type: string
+    value: string
+}
+
+export interface OLAuthorLink {
+    author: OLTypeRef
+    type: OLTypeRef
+}
+
+export interface OLLink {
+    title: string
+    url: string
+    type: OLTypeRef
+}
+
+export interface OLIdentifiers {
+    wikidata?: string[]
+    bookbrainz?: string[]
+    librarything?: string[]
+    goodreads?: string[]
+    musicbrainz?: string[]
+    [key: string]: string[] | undefined // На случай других идентификаторов
+}
+
+export interface OLWorkResponse {
+    key: string
+    title: string
+    type: OLTypeRef
+    description?: string | OLDescription
+    covers?: number[]
+    subjects?: string[]
+    subject_people?: string[]
+    subject_places?: string[]
+    first_publish_date?: string
+    authors?: OLAuthorLink[]
+    links?: OLLink[]
+    identifiers?: OLIdentifiers
+    genres?: string[]
+    latest_revision: number
+    revision: number
+    created: OLValueWithByWithType<string>
+    last_modified: OLValueWithByWithType<string>
+}

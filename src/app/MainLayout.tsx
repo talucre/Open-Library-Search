@@ -1,7 +1,5 @@
 import { AppShell, Container } from '@mantine/core'
 import type { ReactNode } from 'react'
-import { Outlet } from 'react-router'
-
 export const MainLayout = ({
     header,
     children,

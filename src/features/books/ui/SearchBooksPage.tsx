@@ -17,7 +17,7 @@ export const SearchBooksPage = () => {
         isError,
         refetch,
     } = useInfiniteQuery({
-        queryKey: ['books', submittedQuery],
+        queryKey: ['searchBooks', submittedQuery],
         queryFn: ({ pageParam }) => searchBooks(submittedQuery, pageParam),
         initialPageParam: 0,
         getNextPageParam: lastPage => {
