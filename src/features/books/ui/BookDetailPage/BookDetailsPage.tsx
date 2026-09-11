@@ -1,5 +1,5 @@
 import { useParams } from 'react-router'
-import { useGetBookById } from '../api/books'
+import { useGetBookById } from '../../api/books'
 import {
     Center,
     Grid,
@@ -10,7 +10,7 @@ import {
     Title,
     Stack,
 } from '@mantine/core'
-import { Carousel } from '@mantine/carousel'
+import { BookCoverCarousel } from './BookCoverCarousel'
 
 export const BookDetailsPage = () => {
     const { id } = useParams<{ id: string }>()
@@ -43,17 +43,7 @@ export const BookDetailsPage = () => {
         <Grid gap="xs">
             <Grid.Col span={{ base: 12, sm: 6 }}>
                 <Center>
-                    <Carousel h="450" withControls withIndicators>
-                        {data?.covers?.map(c => (
-                            <Carousel.Slide key={c}>
-                                <Image
-                                    w="100%"
-                                    h="450"
-                                    src={`https://covers.openlibrary.org/b/id/${c}-L.jpg`}
-                                />
-                            </Carousel.Slide>
-                        ))}
-                    </Carousel>
+                    <BookCoverCarousel covers={data?.covers} />
                 </Center>
             </Grid.Col>
             <Grid.Col span={{ base: 12, sm: 6 }}>
